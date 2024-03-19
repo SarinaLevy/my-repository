@@ -7,12 +7,12 @@ def hello():
 
 
 
-@app.route('/second')
-def second():
-    return "This is the second page"
+@app.route('/sarina')
+def sarina():
+    return "This is the sarinas page"
 
-@app.route('/third/subthird')
-def third():
+@app.route('/george/subthird')
+def george():
     return "This is the subpage of third page"
 
 @app.route('/forth/<string:my_id>')

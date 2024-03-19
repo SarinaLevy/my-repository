@@ -1,0 +1,92 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: |
+  EC2 instance with security group
+  
+Resources:
+  
+  rMySecGrp:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: "AllowSSH"
+      GroupDescription: "Allow SSH Access" # Required
+      SecurityGroupIngress: 
+      - FromPort: 22
+        ToPort: 22
+        IpProtocol: tcp # Required
+        CidrIp: 0.0.0.0/0
+      Tags: 
+      - Key: Name
+        Value: MySecurityGroup
+
+  rMyInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AdditionalInfo: String
+      Affinity: String
+      AvailabilityZone: String
+      BlockDeviceMappings: 
+        - BlockDeviceMapping
+      CpuOptions: 
+        CpuOptions
+      CreditSpecification: 
+        CreditSpecification
+      DisableApiTermination: Boolean
+      EbsOptimized: Boolean
+      ElasticGpuSpecifications: 
+        - ElasticGpuSpecification
+      ElasticInferenceAccelerators: 
+        - ElasticInferenceAccelerator
+      EnclaveOptions: 
+        EnclaveOptions
+      HibernationOptions: 
+        HibernationOptions
+      HostId: String
+      HostResourceGroupArn: String
+      IamInstanceProfile: String
+      ImageId: ami-0d7a109bf30624c99
+      InstanceInitiatedShutdownBehavior: String
+      InstanceType: t2.micro
+      Ipv6AddressCount: Integer
+      Ipv6Addresses: 
+        - InstanceIpv6Address
+      KernelId: String
+      KeyName: sarina_firstkey
+      LaunchTemplate: 
+        LaunchTemplateSpecification
+      LicenseSpecifications: 
+        - LicenseSpecification
+      Monitoring: Boolean
+      NetworkInterfaces: 
+        - NetworkInterface
+      PlacementGroupName: String
+      PrivateDnsNameOptions: 
+        PrivateDnsNameOptions
+      PrivateIpAddress: String
+      PropagateTagsToVolumeOnCreation: Boolean
+      RamdiskId: String
+      SecurityGroupIds: 
+        - !Ref rMySecGrp
+
+      SecurityGroups: 
+        - String
+      SourceDestCheck: Boolean
+      SsmAssociations: 
+        - SsmAssociation
+      SubnetId: String
+      Tags: 
+      - Key: Name
+        Value: MyPracticeEc2Yaml
+      Tenancy: String
+      UserData: String
+      Volumes: 
+        - Volume
+
+
+
+
+
+
+
+
+

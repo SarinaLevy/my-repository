@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  EC2 Instance with security group
+Resources:
+  RMysecGrp:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: “AllowSSH”
+      GroupDescription: “Allow SSH Access” # Required
+      SecurityGroupIngress:
+        - FromPort: 22
+          ToPort: 22
+          IpProtocol: “tcp” # Required
+          CidrIp: 0.0.0.0/0
+      Tags:
+      - key: Name
+        value: MySerurityGroup
+        
