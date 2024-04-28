@@ -1,0 +1,46 @@
+cfn AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  Ec2 Instance and Kitten carousel
+  
+#Parameters:
+
+    pKeyname:
+    Description: Key name for EC2 access
+    Type: AWS::EC2::KeyPair::KeyName
+  
+Resources:
+
+  rSecGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH and HTTP from Internet
+      GroupName: SSHandHTTP
+      SecurityGroupIngress: 
+        - CidrIp: 0.0.0.0/0
+          FromPort: 22
+          ToPort: 22
+          IpProtocol: tcp
+        - CidrIp: 0.0.0.0/0
+          FromPort: 80
+          ToPort: 80
+          IpProtocol: tcp
+      Tags: 
+        - Key: Name
+          Value: KittensSecGroup
+        - Key: Company
+          Value: Clarusway
+
+  rWebServer:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: String
+      InstanceType: t2.micro
+      KeyName: !Ref pKeyname
+      SecurityGroupIds: 
+        - !Ref rSecGroup
+      Tags: 
+        - Key: Name
+          Value: Kittens Web Server
+      UserData: String
+
+#Outputs:
